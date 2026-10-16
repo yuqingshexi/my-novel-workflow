@@ -76,6 +76,7 @@ document.querySelector('#generate-button').addEventListener('click', async (even
   const end = editor.selectionEnd;
   const context = editor.value.slice(start, end);
   button.disabled = true;
+  editor.readOnly = true;
   aiStatus.textContent = 'Generating?';
   try {
     const generated = await window.novel.generateText({
@@ -94,6 +95,7 @@ document.querySelector('#generate-button').addEventListener('click', async (even
     aiStatus.textContent = `Generation failed: ${error.message}`;
   } finally {
     button.disabled = false;
+    editor.readOnly = false;
   }
 });
 
