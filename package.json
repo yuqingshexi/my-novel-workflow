@@ -1,0 +1,9 @@
+{
+  "name": "my-novel-workflow",
+  "version": "0.1.0",
+  "private": true,
+  "description": "A Markdown-first novel writing desktop starter with local AI assistance",
+  "main": "src/main.js",
+  "scripts": { "start": "electron ." },
+  "devDependencies": { "electron": "^38.0.0" }
+}
