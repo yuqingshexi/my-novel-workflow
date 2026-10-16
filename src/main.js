@@ -94,7 +94,8 @@ ipcMain.handle('ai:generate', async (event, input) => {
     const parsed = new URL(baseUrl);
     if (parsed.protocol !== 'https:' || parsed.username || parsed.password) throw new Error('Online providers must use an HTTPS base URL without embedded credentials.');
     if (apiKey) headers.Authorization = `Bearer ${apiKey}`;
-    url = `${baseUrl}/v1/chat/completions`;
+    const versionedBaseUrl = baseUrl.endsWith('/v1') ? baseUrl : `${baseUrl}/v1`;
+    url = `${versionedBaseUrl}/chat/completions`;
     body = JSON.stringify({ model, messages });
   }
 
